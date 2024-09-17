@@ -31,7 +31,7 @@ if __name__ == '__main__':
     learning_rate = 1e-4
     val_epoch_mod = 2
 
-    mlflow_path = os.path.join('file:///', 'Users', 'larry', 'Documents', 'UWT', 'Thesis Work', 'rec_sys', 'models', 'mimic-iii', 'mlruns')
+    mlflow_path = os.path.join('file:///', '<your_mlflow_base_path>', 'mimic-iii', 'mlruns')
     mlflow.set_tracking_uri(mlflow_path)
     experiment_name = 'Sparse Autoencoder'
     run_name = f'Updated Splits: Normed Mimic Data via Preprocessing Script and Min-Max Scaling'

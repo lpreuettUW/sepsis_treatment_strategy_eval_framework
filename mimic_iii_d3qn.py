@@ -67,7 +67,7 @@ if __name__ == '__main__':
     num_splits = 10
 
     # mlflow stuffs
-    mlflow_path = os.path.join('file:///', 'Users', 'larry', 'Documents', 'UWT', 'Thesis Work', 'rec_sys', 'models', 'mimic-iii', 'mlruns')
+    mlflow_path = os.path.join('file:///', '<your_base_path>', 'mimic-iii', 'mlruns')
     mlflow.set_tracking_uri(mlflow_path)
     experiment_name = 'D3QN MIMIC III: Reward Function Eval'
     run_name = f'Reward Function: {reward_fn_name}'

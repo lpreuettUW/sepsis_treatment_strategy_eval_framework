@@ -15,7 +15,6 @@ from mdp.mimic_iii.reward_functions.factory import Factory as MimicIIIRewardFunc
 from utilities.device_manager import DeviceManager
 from utilities import mimic_iii_funcs
 from utilities.ope_trajectory_dataset import OPETrajectoryDataset
-from utilities.td3_discrete_action_space_adapter import TD3DiscreteActionSpaceAdapter
 
 
 if __name__ == '__main__':
@@ -47,7 +46,7 @@ if __name__ == '__main__':
     fqe_hidden_size = 32
     fqe_batch_size = 8192
     fqe_use_behavior_state = True
-    fqe_run_id = '85de6b80c8374e489bb49164bcbf29a5'
+    fqe_run_id = ''
     # magic
     magic_j_steps = {float('inf'), -1, 3, 5, 7, 10}
     magic_k_conf_iters = 2000
@@ -88,7 +87,7 @@ if __name__ == '__main__':
     # create reward function
     reward_fn = MimicIIIRewardFunctionFactory.create(reward_fn_name)
 
-    mlflow_path = os.path.join('file:///', 'Users', 'larry', 'Documents', 'UWT', 'Thesis Work', 'rec_sys', 'models', 'mimic-iii_reward_fn_eval', 'vm', 'mlruns')
+    mlflow_path = os.path.join('file:///', '<your_base_path>', 'mimic-iii', 'mlruns')
     mlflow.set_tracking_uri(mlflow_path)
     experiment_name = 'MAGIC Retrospective'
     run_name = f'D3QN - Reward Function: {reward_fn_name}'
@@ -170,14 +169,6 @@ if __name__ == '__main__':
                               num_actions=len(MimicIIIDiscreteActionSpace))
             d3qn_agent.load_model(f'runs:/{d3qn_runid}/final_d3qn_model_split_{split}')
             d3qn_agent.eval()
-            # td3_agent = TD3(state_dim=state_space_dim, action_dim=2, hidden_dim=td3_hidden_size, reward_max=max_reward,
-            #                 gamma=gamma, tau=tau, buffer_size=0, per_alpha=td3_per_alpha, per_beta=td3_per_beta,
-            #                 per_eps=td3_per_eps, reg_lambda=td3_reg_lambda, batch_size=0, actor_lr=td3_actor_lr, critic_lr=td3_critic_lr,
-            #                 action_mins=action_mins, action_maxs=action_maxs, actor_delay_update=td3_actor_delay_update,
-            #                 action_loss_lambda=td3_action_loss_lambda)
-            # td3_agent.load_model(f'runs:/{td3_runid}/final_ddpg_model_split_{split}')
-            # td3_agent.eval()
-            # td3_adapter = TD3DiscreteActionSpaceAdapter(td3_agent, continuous_action_scaler)
             # create FQE
             fqe = FittedQEvaluation(test_traj_dataset, d3qn_agent, k_itrs=fqe_k_itrs, convergence_eps=fqe_convergence_eps, max_train_itrs=fqe_max_train_itrs,
                                     lr=fqe_lr, hidden_size=fqe_hidden_size, batch_size=fqe_batch_size, use_behavior_policy_states=fqe_use_behavior_state,

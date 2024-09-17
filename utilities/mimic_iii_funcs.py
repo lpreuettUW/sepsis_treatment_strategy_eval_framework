@@ -11,11 +11,11 @@ from sklearn.preprocessing import MinMaxScaler
 
 def load_standardized_mimic_data(split: int, load_with_raw_data_columns: Optional[List[str]] = None) -> pd.DataFrame:
     # load split data
-    split_base_path = '/Users/larry/Documents/UWT/Thesis Work/rec_sys/repositories/off_policy_policy_evaluation/datasets/mimic_iii/stratified_splits'
+    split_base_path = '<your_base_path>/off_policy_policy_evaluation/datasets/mimic_iii/stratified_splits'
     split_file = os.path.join(f'{split_base_path}', f'split_{split}.csv')
     split_data = pd.read_csv(split_file, index_col=0)
     # load mimic data
-    mimic_path = '/Users/larry/Documents/UWT/Thesis Work/rec_sys/repositories/off_policy_policy_evaluation/datasets/mimic_iii/preprocessed_cohort/sepsis_final_data_withTimes_90_day_death_window.csv'
+    mimic_path = '<your_base_path>/off_policy_policy_evaluation/datasets/mimic_iii/preprocessed_cohort/sepsis_final_data_withTimes_90_day_death_window.csv'
     mimic_data = pd.read_csv(mimic_path)
     # merge data
     merged_mimic_data = mimic_data.merge(split_data, on='traj', how='inner')
@@ -36,11 +36,11 @@ def load_standardized_mimic_data(split: int, load_with_raw_data_columns: Optiona
 
 def load_raw_mimic_data(split: int) -> pd.DataFrame:
     # load split data
-    split_base_path = '/Users/larry/Documents/UWT/Thesis Work/rec_sys/repositories/off_policy_policy_evaluation/datasets/mimic_iii/stratified_splits'
+    split_base_path = '<your_base_path>/off_policy_policy_evaluation/datasets/mimic_iii/stratified_splits'
     split_file = os.path.join(f'{split_base_path}', f'split_{split}.csv')
     split_data = pd.read_csv(split_file, index_col=0)
     # load mimic data
-    mimic_path = '/Users/larry/Documents/UWT/Thesis Work/rec_sys/repositories/off_policy_policy_evaluation/datasets/mimic_iii/preprocessed_cohort/sepsis_final_data_RAW_withTimes_90_day_death_window.csv'
+    mimic_path = '<your_base_path>/off_policy_policy_evaluation/datasets/mimic_iii/preprocessed_cohort/sepsis_final_data_RAW_withTimes_90_day_death_window.csv'
     mimic_data = pd.read_csv(mimic_path)
     # merge data
     merged_mimic_data = mimic_data.merge(split_data, on='traj', how='inner')

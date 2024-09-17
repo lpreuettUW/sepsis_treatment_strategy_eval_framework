@@ -30,7 +30,7 @@ if __name__ == '__main__':
     num_splits = 10
     reward_fn = MimicIIIRewardFunctionFactory.create(reward_fn_name)
 
-    mlflow_path = os.path.join('file:///', 'Users', 'larry', 'Documents', 'UWT', 'Thesis Work', 'rec_sys', 'models', 'mimic-iii_reward_fn_eval', 'vm', 'mlruns')
+    mlflow_path = os.path.join('file:///', '<your_base_path>', 'mimic-iii', 'mlruns')
     mlflow.set_tracking_uri(mlflow_path)
     experiment_name = 'KMeans SARSA Behavior Policy Retrospective: sparse - split 5'
     run_name = 'run 0'
