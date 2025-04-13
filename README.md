@@ -1,5 +1,5 @@
 # Evaluation Framework for Sepsis Treatment Strategies
-Code release for Reproducible Evaluation Framework for Sepsis Treatment Strategies Learned via Offline Reinforcement Learning.
+Code release for [Reproducible Evaluation Framework for Sepsis Treatment Strategies Learned via Offline Reinforcement Learning](https://ieeexplore.ieee.org/document/10880803).
 
 # Environment Setup
 A Python environment may be constructed from `env.yml`:
